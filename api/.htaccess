@@ -1,0 +1,13 @@
+RewriteEngine On
+AddHandler application/x-httpd-php .php
+
+# CORS for all API files
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Headers "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+</IfModule>
+
+# Handle preflight
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
