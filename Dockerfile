@@ -1,8 +1,6 @@
 FROM php:8.2-apache
 
-ENV PORT=80
-EXPOSE 80
+# (optional) useful PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql
 
 COPY . /var/www/html/
-
-CMD ["apache2-foreground"]
